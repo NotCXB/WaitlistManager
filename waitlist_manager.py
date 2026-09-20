@@ -1,11 +1,8 @@
 # Create a Node class to represent each customer in the waitlist
 class Node:
-    '''
-    A class representing a node in a linked list.
-    Attributes:
-        name (str): The name of the customer.
-        next (Node): A reference to the next node in the list.
-    '''
+    def __init__(self, name):
+        self.name = name
+        self.next = None
     
     
 
@@ -13,16 +10,57 @@ class Node:
 
 # Create a LinkedList class to manage the waitlist
 class LinkedList:
-    '''
-    A class representing a linked list to manage a waitlist.
-    Attributes:
-        head (Node): The first node in the linked list.
-    Methods:
-        add_front(name): Adds a customer to the front of the waitlist.
-        add_end(name): Adds a customer to the end of the waitlist.
-        remove(name): Removes a customer from the waitlist by name.
-        print_list(): Prints the current waitlist.
-    '''
+    def __init__(self):
+        self.head = None
+
+    def add_front(self, name):
+        new_node = Node(name)
+        new_node.next = self.head
+        self.head = new_node
+
+    def print_list(self):
+        new_node = self.head is None:
+        new_node.next = self
+
+        print("Current waitlist:")
+        current = self.head
+
+        while current is not None:
+            print(f"- {current.name}")
+            current = current.next
+
+    def add_end(self, name):
+        new_node = Node(name)
+
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+
+            while current.next is not None:
+                current = current.next
+
+            current.next = new_node
+
+        return f" {name} has been added to the end of the waitlist."
+
+    def remove(self, name):
+        current = self.head
+        previous = None
+
+        while current is not None:
+            if current.name == name:
+                if previous is None:
+                    self.head = current.next
+                else:
+                    previous.next = current.next
+                return f"{name} has been removed from the waitlist."
+            previous = current
+            current = current.next
+
+        return f"{name} is not in the waitlist."
+
+    
     
 
 
