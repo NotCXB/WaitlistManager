@@ -19,8 +19,9 @@ class LinkedList:
         self.head = new_node
 
     def print_list(self):
-        new_node = self.head is None:
-        new_node.next = self
+        if self.head is None:
+            print("The waitlist is empty")
+            return
 
         print("Current waitlist:")
         current = self.head
@@ -66,6 +67,7 @@ class LinkedList:
 
 def waitlist_generator():
     # Create a new linked list instance
+    waitlist = LinkedList()
     
     
     while True:
@@ -81,21 +83,25 @@ def waitlist_generator():
         if choice == "1":
             name = input("Enter customer name to add to front: ")
             # Call the add_front method
+            waitlist.add_front(name)
+            print(f"{name} has been added to the front of the waitlist.")
             
 
         elif choice == "2":
             name = input("Enter customer name to add to end: ")
             # Call the add_end method
+            print(waitlist.add_end(name))
             
 
         elif choice == "3":
             name = input("Enter customer name to remove: ")
             # Call the remove method
+            print(waitlist.remove(name))
             
             
         elif choice == "4":
-            print("Current waitlist:")
             # Print out the entire linked list using the print_list method.
+            waitlist.print_list()
             
             
             
@@ -107,11 +113,5 @@ def waitlist_generator():
             print("Invalid option. Please choose 1–5.")
 
 # Call the waitlist_generator function to start the program
-
-
-'''
-Design Memo: Write Your Design Memo Include a 200–300 word response in your code or in a .txt file:
-- How does your list work?
-- What role does the head play?
-- When might a real engineer need a custom list like this?
-'''
+if __name__ == "__main__":
+    waitlist_generator()
